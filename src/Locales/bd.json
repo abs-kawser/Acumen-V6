@@ -1,0 +1,30 @@
+
+
+{
+  "translation": {
+    "hello": "হাই",
+    "this line is translated": "দিস ইজ আরিয়ান আরিফ"
+  },
+  "navigation": {
+    "New Activity": "নিউ এক্টিভিটি", 
+    "Home": "হোম",
+    "Sales Order": "অর্ডার",
+    "Order Delivery": "অর্ডার ডেলিভারি", 
+    "Tailoring": "টেইলরিং",
+    "Items": "আইটেম",
+    "Change Password": "পাসওয়ার্ড পরিবর্তন",
+    "Draft": "ড্রাফ্ট্",
+    "Logout":"লগ আউট" ,
+
+
+    "Activity Date": "এক্টিভিটি ডেইট",
+    "Date": "তারিখ:",
+    "Time":"সময়:",
+    "Customer":"গ্রাহক:",
+    "Item Add":"আইটেম যোগ করুন:"
+
+  
+  }
+}
+
+
