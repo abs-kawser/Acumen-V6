@@ -60,6 +60,8 @@ const NewActivity = () => {
   const {isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
   const {login, userDetails} = isLoggedIn;
 
+
+
   // const {
   //   selectedCustomerType,
   //   setSelectedCustomerType,
@@ -73,11 +75,11 @@ const NewActivity = () => {
   //   setNote,
   // } = useContext(CustomerContext);
 
+
   const [selectedCustomerType, setSelectedCustomerType] = useState('Default');
   const [selectedCustomer, setSelectedCustomer] = useState('');
 
   // console.log("selected customer type ///////",selectedCustomerType)
-
   const [createNewCustomer, setCreateNewCustomer] = useState(null);
 
   console.log(
@@ -91,24 +93,26 @@ const NewActivity = () => {
   const [note, setNote] = useState('');
 
   console.log('this is selected customer type', selectedCustomerType);
-
   // console.log('user details', JSON.stringify(userDetails, null, 2));
 
-  // ======= date========
+  // ======= date========\\
   const [startDate, setStartDate] = useState(new Date());
   const [showStartDatePicker, setShowStartDatePicker] = useState(false);
 
   const [fromTime, setFromTime] = useState(new Date()); // State for selected time
   const [showTimePicker, setShowTimePicker] = useState(false); // State for time picker visibility
 
+
   // ===================
   const [customerName, setCustomerName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [customerMobile, setCustomerMobile] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
+// const [status, setStatus] = useState(null); 
 
-  // const [status, setStatus] = useState(null); // Initialize status state as null
 
+
+  // Initialize status state as null
   const [data, setData] = React.useState([]);
 
   // today
@@ -137,6 +141,8 @@ const NewActivity = () => {
   //   // Clear the interval when the component unmounts
   //   return () => clearInterval(interval);
   // }, []);
+
+
 
   const handleNewActivity = () => {
     // const value = [
@@ -172,14 +178,15 @@ const NewActivity = () => {
         'h:mm:ss',
       )}`,
     };
-
     navigation.navigate('All Activity', {data: value});
   };
 
   useFocusEffect(
     React.useCallback(() => {
-      setShowInput(false); // Set the state variable `showInput` to false
-      setSelectedCustomerType('Default'); // Set the state variable `selectedCustomerType` to 'Default'
+      setShowInput(false); 
+      // Set the state variable `showInput` to false
+      // Set the state variable `selectedCustomerType` to 'Default'
+      setSelectedCustomerType('Default'); 
     }, []),
   );
 
@@ -198,8 +205,8 @@ const NewActivity = () => {
 
   const currentDate = moment().format('DD/MM/YYYY');
 
+  
   // ============== date time formate===================
-
   const formatDate = date => {
     return moment(date).format('DD/MM/YYYY');
   };
@@ -214,9 +221,7 @@ const NewActivity = () => {
     setShowStartDatePicker(false);
     if (selectedDate) {
       setStartDate(selectedDate);
-
       // setStartDate(moment(selectedDate).format('DD/MM/YYYY'));
-
       // if (selectedDate > endDate) {
       //   setError('select correct date');
       // } else {
@@ -227,7 +232,6 @@ const NewActivity = () => {
 
   const handleFromTimeChange = (event, selectedTime) => {
     setShowTimePicker(Platform.OS === 'ios');
-
     if (selectedTime) {
       setFromTime(selectedTime);
       // if (selectedTime > toTime) {
@@ -301,7 +305,6 @@ const NewActivity = () => {
         },
       );
       const jsonData = await response.json();
-
       const transformedData = jsonData.map(entry => ({
         label: entry.customerName,
         value: entry.customerId,
@@ -378,6 +381,8 @@ const NewActivity = () => {
 
   // ====== kawser code ======
 
+
+
   const handleCreateNewCustomer = async () => {
     // Check if any required fields are empty
     if (
@@ -433,6 +438,7 @@ const NewActivity = () => {
 
   //  ======================= TODAYS WORKS FOR NEW ACTIVITY TABLE =======================
 
+
   const [activityData, setActivityData] = useState(null);
   const [ActivityStartTime, setActivityStartTime] = useState(null);
   const [deviceActivityId, setDeviceActivityId] = useState('');
@@ -457,13 +463,10 @@ const NewActivity = () => {
     const generateRandomNumber = () => {
       const id = userDetails.empId;
       const randomPart = Math.floor(Math.random() * 1000000000); // Generate a random 9-digit number
-
       const fullNumber = `${id}${randomPart.toString().padStart(9, '0')}`;
       setDeviceActivityId(fullNumber);
     };
-
     // Call the function to generate the random number when the component mounts
-
     generateRandomNumber();
   }, []);
 
@@ -506,12 +509,13 @@ const NewActivity = () => {
   const Notes = note;
 
   // const ActivityStartTime = data?.ActivityStartTime;
-
   // const ActivityStartTime = bdDateTime;
   // const ActivityEndTime = bdDateTime;
 
   // for time tracker
   // const ActivityTime = activityTime;
+
+
 
   const WorkingStatus = 1;
   const EntryBy = userDetails?.empId;
@@ -578,6 +582,7 @@ const NewActivity = () => {
     }
   };
 
+
   // const getData = () => {
   //   getActivityData(item => setActivityData(item));
   // };
@@ -585,7 +590,6 @@ const NewActivity = () => {
   const getData = () => {
     getActivityData(item => {
       setActivityData(item);
-
       console.log(
         'this is newly created activity data ==== >',
         JSON.stringify(item, null, 2),
@@ -594,9 +598,7 @@ const NewActivity = () => {
   };
 
   //=============== time tracker ===============
-
   // time tracker date time update
-
   // useEffect(() => {
   //   saveTimeTrackerData(time);
   // }, [isFocused]);
@@ -608,7 +610,6 @@ const NewActivity = () => {
       WorkingStatus,
       EntryBy,
       EntryDate, // DeviceSystemDateTime
-
       success => {
         if (success) {
           // toast.show('Pause data inserted successfully', {
@@ -649,17 +650,14 @@ const NewActivity = () => {
       success => {
         if (success) {
 
-          
           // toast.show('Draft data inserted successfully', {
           //   type: 'success',
           //   duration: 2000,
           // });
 
           console.log('Draft data inserted successfully')
-
           getDraftallData();
           // navigation.navigate('HomeScreen');
-
           // Call saveTimeTrackerData after saveDraftData
           // saveTimeTrackerData(time);
         } else {
@@ -682,13 +680,8 @@ const NewActivity = () => {
 
 
 
-
-
-
-
-
-
   return (
+
     <ScrollView style={customStyle.container}>
       <View style={styles.mainContainer}>
         {/* top header text */}
@@ -738,7 +731,6 @@ const NewActivity = () => {
                 onChange={handleStartDateChange}
               />
             )}
-
           </View>
 
           {/* time section */}
@@ -795,9 +787,7 @@ const NewActivity = () => {
             {selectedCustomerType === '2' && (
               <View>
                 <Text style={styles.label}>Customer</Text>
-
                 {/* customer dropdown */}
-
                 <View>
                   <TouchableOpacity
                     style={styles.dropdownSelector}
@@ -828,7 +818,6 @@ const NewActivity = () => {
                         // data={filteredData}
                         data={data}
                         // sortedData
-
                         renderItem={({item, index}) => {
                           return (
                             <TouchableOpacity
@@ -1007,6 +996,7 @@ const NewActivity = () => {
         </View>
       </View>
     </ScrollView>
+
   );
 };
 
@@ -1177,6 +1167,8 @@ const styles = StyleSheet.create({
     // flex:1,
   },
 });
+
+
 
 {
   /* <Dropdown

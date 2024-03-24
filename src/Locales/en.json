@@ -23,11 +23,14 @@
     "Time":"Time:",
     "Customer":"Customer:",
     "Item Add":"Item Add:"
+  },
 
+    "stckNavigation":{
+      "New Activity": "New Activity"
 
+    }
 
-
-   
-
-  }
 }
+
+
+

@@ -157,7 +157,6 @@ export const initActivityItemDatabase = () => {
 export const insertActivityItem = (tableData, callback) => {
   let successCount = 0; // Keep track of successful insertions
   const totalItems = tableData.length; // Total items to be inserted
-
   db.transaction(txn => {
     tableData.forEach(item => {
       const {
@@ -169,19 +168,17 @@ export const insertActivityItem = (tableData, callback) => {
         Remarks,
         DeviceSystemDateTime,
       } = item;
-
       // Check if the item already exists in the database
       txn.executeSql(
         // 'SELECT * FROM activity_item WHERE Barcode = ?',
         // [Barcode],
-
         'SELECT * FROM activity_item WHERE DeviceActivityId = ? AND Barcode = ?',
         [DeviceActivityId, Barcode],
         (tx, res) => {
           if (res.rows.length === 0) {
             // Item does not exist, perform the insertion
             txn.executeSql(
-              'INSERT INTO activity_item(DeviceActivityId,Barcode, ItemQty, IsSample, SampleDeliveryTime, Remarks, DeviceSystemDateTime) VALUES(?,?,?,?,?,?,?)',
+              'INSERT INTO activity_item(DeviceActivityId,Barcode,ItemQty,IsSample, SampleDeliveryTime, Remarks, DeviceSystemDateTime) VALUES(?,?,?,?,?,?,?)',
               [
                 DeviceActivityId,
                 Barcode,
@@ -210,9 +207,7 @@ export const insertActivityItem = (tableData, callback) => {
             successCount++;
             if (successCount === totalItems) {
               // If all insertions are successful, trigger callback with success
-
               // callback(true);
-
               callback(true, true);
             }
           }
@@ -222,13 +217,14 @@ export const insertActivityItem = (tableData, callback) => {
   });
 };
 
+
 export const getActivityItemData = callback => {
   db.transaction(txn => {
-    txn.executeSql('SELECT * FROM activity_item', [], (tx, res) => {
+    txn.executeSql('SELECT * FROM activity_item',[], (tx, res) => {
       const temp = [];
       for (let i = 0; i < res.rows.length; ++i) {
         temp.push(res.rows.item(i));
-      }
+      };
       callback(temp);
     });
   });
@@ -252,6 +248,7 @@ export const getActivityItemData = callback => {
 // };
 
 // delete all data from table
+
 export const deleteActivityItemData = () => {
   db.transaction(tx => {
     tx.executeSql(
@@ -270,7 +267,6 @@ export const deleteActivityItemData = () => {
 };
 
 // get specific data using device-activity-id
-
 export const getActivityItemsByDeviceActivityId = (
   DeviceActivityID,
   callback,
@@ -289,7 +285,7 @@ export const getActivityItemsByDeviceActivityId = (
           callback(activityItems);
         } else {
           callback([]);
-        }
+        };
       },
     );
   });

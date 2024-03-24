@@ -10,10 +10,9 @@ import {ToastProvider} from 'react-native-toast-notifications';
 import CustomerProvider from './src/Context/CustomerProvider';
 
 const App = () => {
+
   // const {t,i18n} = useTranslation();
-
   // const [currentLanguage,setLanguage] =useState('en');
-
   // const changeLanguage = value => {
   //   i18n
   //     .changeLanguage(value)
@@ -21,8 +20,10 @@ const App = () => {
   //     .catch(err => console.log(err));
   // };
 
+
   return (
-    <>
+
+    <> 
       <AuthProvider>
         <DataProvider>
           <CustomerProvider>
@@ -35,6 +36,7 @@ const App = () => {
         </DataProvider>
       </AuthProvider>
     </>
+
   );
 };
 

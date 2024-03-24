@@ -93,11 +93,9 @@ const ActivitySummary = ({route}) => {
     initDatabase();
     // getData();
     // deleteData()
-
     // === draft ====
     // initDraftDatabase();
     // getDraftallData();
-
     // ==== Time tracker =====
     initTimeTrackerDatabase();
     // getTimeTrackerAllData();

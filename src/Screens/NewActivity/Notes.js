@@ -16,16 +16,19 @@ import {
   updateActivityNote,
 } from '../../Database/NewActivityTable';
 import {useToast} from 'react-native-toast-notifications';
+
 import moment from 'moment';
 
+
+
 const Notes = ({route}) => {
+  
   const navigation = useNavigation();
   const {devID} = route.params;
   const toast = useToast();
   const isFocused = useIsFocused();
 
   // const date = moment();
-
   const [activityData, setActivityData] = useState([]);
   const [note, setNote] = useState('');
 
@@ -50,9 +53,7 @@ const Notes = ({route}) => {
             type: 'success',
             duration: 2000,
           });
-
           navigation.goBack();
-
           // getData();
         } else {
           toast.show('Failed to update note', {
@@ -61,19 +62,16 @@ const Notes = ({route}) => {
           });
         }
       });
-    }
+    };
   };
 
   const getData = () => {
     // getActivityData(item => setActivityData(item));
     // getNewActivityByDeviceActivityId(devID, (item) => { setActivityData(item) })
-
     getNewActivityByDeviceActivityId(devID, item => {
       if (item && item.length > 0) {
         setActivityData(item);
-
-        // console.log('updated notessssssssss', item[0].Notes);
-
+        // console.log('updated notessssssssss', item[0].Notes);+
         if (item.length > 0) {
           setNote(item[0].Notes);
         }
@@ -81,7 +79,9 @@ const Notes = ({route}) => {
     });
   };
 
+
   return (
+
     <View style={customStyle.container}>
       <ScrollView>
         <View style={{alignSelf: 'center', marginVertical: 10}}>
@@ -140,11 +140,9 @@ const Notes = ({route}) => {
           </Text>
         </View> */}
         </View>
-
         {/* notes input box */}
         <View>
           <Text style={styles.label}>Notes </Text>
-
           <View style={{flex: 1}}>
             <TextInput
               multiline
@@ -154,7 +152,6 @@ const Notes = ({route}) => {
               placeholderTextColor="gray"
               onChangeText={text => setNote(text)}
               value={note}
-
               // value={activityData.length > 0 ? activityData[0].Notes : ''}
             />
           </View>
@@ -172,6 +169,7 @@ const Notes = ({route}) => {
           marginBottom: 50,
           gap: 20,
         }}>
+
         <TouchableOpacity
           style={{
             backgroundColor: '#F7D2D2AB',
@@ -200,14 +198,17 @@ const Notes = ({route}) => {
           //   navigation.navigate('All Activity', {note: notes})
           // }
         >
-          <Text style={{color: '#04C1AA', fontWeight: '700'}}>Save & Next</Text>
+          <Text style={{color:'#04C1AA', fontWeight: '700',}}>Save & Next</Text>
         </TouchableOpacity>
       </View>
     </View>
+
   );
 };
 
 export default Notes;
+
+
 
 const styles = StyleSheet.create({
   label: {

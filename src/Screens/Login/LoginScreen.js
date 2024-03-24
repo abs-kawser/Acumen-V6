@@ -36,23 +36,21 @@ const LoginScreen = () => {
   const [isLoader, setIsLoader] = useState(false); // State for managing loading indicator
 
   const handleLogin = async () => {
+
     if (!username || !userPassword) {
       // setError('Please fill in both username and password fields');
       ToastAndroid.show('User ID and Password Required', ToastAndroid.SHORT);
       return;
     }
     setIsLoader(true); // Start loading
-
     // setIsLoading(true)
-
     const requestData = {
       UserName: username,
       Password: userPassword,
     };
 
     const authHeader = 'Basic ' + base64.encode(USERNAME + ':' + PASSWORD);
-
-    const response = await fetch(`${Base_Url}/Api/Home/LoginApi`, {
+    const response = await fetch(`${Base_Url}/Api/Home/LoginApi`,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,22 +59,18 @@ const LoginScreen = () => {
       body: JSON.stringify(requestData),
     });
 
+
     const result = await response.json();
-
     setIsLoader(false); // Stop loading
-
     console.log('this is login details', JSON.stringify(result, null, 2));
-
     if (result.status.isSuccess === true) {
       await AsyncStorage.setItem('userData', JSON.stringify(result));
-
       // extra data load and store when user login
       await handleShopTailor(result);
       await handleShopEmployeeList(result);
       await handleDesignTemplate(result);
 
       // setIsLoading(false)
-
       setIsLoggedIn(prevUserDetails => ({
         ...prevUserDetails,
         login: true,

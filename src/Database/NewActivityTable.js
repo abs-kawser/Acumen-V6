@@ -23,8 +23,8 @@ export const initDatabase = () => {
   });
 };
 
-// ==== current working code 25/02/2024 ====
 
+// ==== current working code 25/02/2024 ====
 // export const insertNewActivity = (
 //   ActivityBy,
 //   DeviceActivityID,
@@ -68,7 +68,6 @@ export const initDatabase = () => {
 //     );
 //   });
 // };
-
 
 export const insertNewActivity = (
   ActivityBy,
@@ -259,12 +258,6 @@ export const updateActivityCustomer = (DeviceActivityID, customerName,customerMo
 
 
 
-
-
-
-
-
-
 export const updateActivityNote = (DeviceActivityID, note, callback) => {
   db.transaction(txn => {
     txn.executeSql(
@@ -320,11 +313,7 @@ export const deleteUser = (id, callback) => {
 
 
 // Execute the SQL query to delete all rows from the table
-
-
-
 export const deleteAllActivityData = () => {
-
   db.transaction((tx) => {
     tx.executeSql('DELETE FROM new_activity_table', [], (tx, results) => {
       // Handle success, if needed
@@ -381,6 +370,7 @@ export const getNewActivityByDeviceActivityId = (DeviceActivityID, callback) => 
 
 
 export const getJoinedData = () => {
+  
   db.transaction(txn => {
     txn.executeSql(
       'SELECT * FROM new_activity_table INNER JOIN specification_table ON new_activity_table.Activity_id = specification_table.Spec_id',
@@ -414,6 +404,7 @@ export const getJoinedData = () => {
       },
     );
   });
+  
 };
 
 

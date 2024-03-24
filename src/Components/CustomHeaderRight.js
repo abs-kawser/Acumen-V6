@@ -38,7 +38,6 @@ const CustomHeaderRight = ({onDotButtonPress}) => {
         style={{marginRight: 5, padding: 10, borderRadius: 50}}
         onPress={toggleButton}>
         <Icon name="bell" size={20} color="#fff" />
-
         {/* <DotIcon width={20} height={20} fill="#ffffff" /> */}
       </TouchableOpacity>
 

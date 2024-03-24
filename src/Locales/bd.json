@@ -22,9 +22,12 @@
     "Time":"সময়:",
     "Customer":"গ্রাহক:",
     "Item Add":"আইটেম যোগ করুন:"
+  },
 
-  
+  "stckNavigation":{
+    "New Activity": "নিউ এক্টিভিটি"
   }
+
 }
 
 

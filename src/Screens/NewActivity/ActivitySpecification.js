@@ -169,10 +169,8 @@ const ActivitySpecification = ({route}) => {
 
       // Add the new table entry to the tableData state
       setTableData(prevTables => [...prevTables, newTable]);
-
       // Reset selectedItem
       // setSelectedItem(null);
-
       // Display data in console
       // console.log('Tables Data:', tableData);
     } else {
@@ -222,9 +220,7 @@ const ActivitySpecification = ({route}) => {
   };
 
   // ====== arif end =====
-
   // =========== MAIN =============
-
   // const handleQtyChange = (index, text) => {
   //   const updatedCustomers = [...selectedCustomer];
   //   updatedCustomers[index] = {...updatedCustomers[index], ItemQty: text};
@@ -744,7 +740,6 @@ const ActivitySpecification = ({route}) => {
             ))}
 
             {/* ======================= */}
-
             {saveData.map((customer, index) => (
               <View style={styles.table_body}>
                 <View style={{width: '15%'}}>
@@ -818,7 +813,6 @@ const ActivitySpecification = ({route}) => {
                       // keyboardType="numeric"
                       value={customer.Remarks}
                       // onChangeText={text => handleRemarksChange(index, text)}
-
                       editable={false}
                     />
                   </View>
@@ -828,9 +822,7 @@ const ActivitySpecification = ({route}) => {
           </View>
         </View>
       </ScrollView>
-
       {/* button */}
-
       <View
         style={{
           display: 'flex',

@@ -9,9 +9,9 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import React, {useContext, useState, useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {AuthContext} from '../../Context/AuthContext';
+import React, { useContext, useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../Context/AuthContext';
 import customStyle from '../../Styles/commonStyle';
 
 import NewActivity from '../../../assets/homeScreen/Activity.svg';
@@ -21,20 +21,20 @@ import OrderDelivery from '../../../assets/images/orderDelivery.svg';
 import Tailor from '../../../assets/images/tailor.svg';
 import Items from '../../../assets/images/items.svg';
 import Settings from '../../../assets/images/settings.svg';
-import {useNetInfo} from '@react-native-community/netinfo';
+import { useNetInfo } from '@react-native-community/netinfo';
 import NetworkCheck from '../NetworkCheck/NetworkCheck';
 
 import moment from 'moment';
 import axios from 'axios';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const net = useNetInfo();
 
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const {isLoggedIn} = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   // const [currentTime, setCurrentTime] = useState('');
 
@@ -52,7 +52,7 @@ const HomeScreen = () => {
         const response = await axios.get(
           'http://worldtimeapi.org/api/timezone/Asia/Dhaka',
         );
-        const {datetime} = response.data;
+        const { datetime } = response.data;
 
         const datetimes = moment(datetime);
         const formattedTime = datetimes.format('HH:mm:ss');
@@ -132,7 +132,10 @@ const HomeScreen = () => {
   //   };
   // }, []);
 
+
+
   return (
+
     <>
       <ScrollView contentContainerStyle={customStyle.container}>
         <StatusBar
@@ -152,9 +155,7 @@ const HomeScreen = () => {
         {/* content */}
         <View style={styles.contentContainer}>
           {/* <DetailsScreen /> */}
-
           {/* BRAND LOGO */}
-
           {/* <View style={styles.brandLogo}>
             <Image
               style={{width: '100%', height: '100%', resizeMode: 'cover'}}
@@ -207,11 +208,11 @@ const HomeScreen = () => {
               style={styles.subContent}
               onPress={() => navigation.navigate('New Activity')}>
               <View style={styles.inner}>
-                
+
                 <View>
                   {/* <NewActivity width={50} height={50} /> */}
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/Activity.png')}
                   />
                 </View>
@@ -227,10 +228,10 @@ const HomeScreen = () => {
             <TouchableOpacity
               style={styles.subContent}
               onPress={() => navigation.navigate('Sales Order')}>
-              <View style={[styles.inner, {backgroundColor: '#92BDFD'}]}>
+              <View style={[styles.inner, { backgroundColor: '#92BDFD' }]}>
                 <View>
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/shopping.png')}
                   />
                 </View>
@@ -246,10 +247,10 @@ const HomeScreen = () => {
             <TouchableOpacity
               style={styles.subContent}
               onPress={() => navigation.navigate('Order Delivery')}>
-              <View style={[styles.inner, {backgroundColor: '#92BDFD'}]}>
+              <View style={[styles.inner, { backgroundColor: '#92BDFD' }]}>
                 <View>
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/box.png')}
                   />
                 </View>
@@ -268,11 +269,10 @@ const HomeScreen = () => {
               <View style={styles.inner}>
                 <View>
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/tailor.png')}
                   />
                 </View>
-
                 <View style={styles.textContainer}>
                   <Text style={styles.title}>{t('navigation.Tailoring')}</Text>
                 </View>
@@ -285,7 +285,7 @@ const HomeScreen = () => {
               <View style={styles.inner}>
                 <View>
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/items.png')}
                   />
                 </View>
@@ -299,10 +299,10 @@ const HomeScreen = () => {
             <TouchableOpacity
               style={styles.subContent}
               onPress={() => navigation.navigate('Draft')}>
-              <View style={[styles.inner, {backgroundColor: '#92BDFD'}]}>
+              <View style={[styles.inner, { backgroundColor: '#92BDFD' }]}>
                 <View>
                   <Image
-                    style={{width: 50, height: 50, resizeMode: 'contain'}}
+                    style={{ width: 50, height: 50, resizeMode: 'contain' }}
                     source={require('../../../assets/homeScreen/Draft.png')}
                   />
                 </View>
@@ -331,7 +331,6 @@ const HomeScreen = () => {
             </TouchableOpacity> */}
 
             {/* scanner */}
-
             {/* <TouchableOpacity
               style={styles.subContent}
               onPress={() => navigation.navigate('Scanner')}>
@@ -348,9 +347,7 @@ const HomeScreen = () => {
                 </View>
               </View>
             </TouchableOpacity> */}
-
             {/* photo capture */}
-
             {/* <TouchableOpacity
               style={styles.subContent}
               onPress={() => navigation.navigate('Photo Captures')}>
@@ -383,13 +380,14 @@ const HomeScreen = () => {
           </View>
         </View>
       </ScrollView>
-
       {!net.isConnected ? <NetworkCheck /> : null}
     </>
   );
 };
 
 export default HomeScreen;
+
+
 
 const styles = StyleSheet.create({
   brandLogo: {

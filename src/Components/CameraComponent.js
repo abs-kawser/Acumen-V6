@@ -28,7 +28,6 @@ const CameraComponent = ({isActive, onCodeScanned}) => {
       isActive={isActive}
       codeScanner={codeScanner}
       //   format={format}
-      
     />
   );
 };

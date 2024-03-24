@@ -161,8 +161,7 @@ export const insertDraftItems = (
               Notes,
               CustomerType,
               ActivityEndTime,
-              DeviceActivityID,
-              
+              DeviceActivityID,             
             ],
             (tx, res) => {
               if (res.rowsAffected > 0) {
@@ -190,7 +189,7 @@ export const insertDraftItems = (
               WorkingStatus,
             ],
             (tx, res) => {
-              if (res.rowsAffected > 0) {
+              if (res.rowsAffected > 0){
                 callback(true);
               } else {
                 callback(false);
@@ -202,6 +201,8 @@ export const insertDraftItems = (
     );
   });
 };
+
+
 
 
 export const getDraftDataByActivityBy = (ActivityBy, callback) => {
@@ -221,8 +222,6 @@ export const getDraftDataByActivityBy = (ActivityBy, callback) => {
 };
 
 
-
-
 export const getDraftData = callback => {
   db.transaction(txn => {
     txn.executeSql('SELECT * FROM draft_table', [], (tx, res) => {
@@ -234,6 +233,7 @@ export const getDraftData = callback => {
     });
   });
 };
+
 
 export const deleteDraftData = (id, callback) => {
   db.transaction(txn => {
@@ -252,13 +252,8 @@ export const deleteDraftData = (id, callback) => {
 };
 
 
-
 // Execute the SQL query to delete all rows from the table
-
-
-
 export const deleteAllActivityData = () => {
-
   db.transaction((tx) => {
     tx.executeSql('DELETE FROM draft_table', [], (tx, results) => {
       // Handle success, if needed

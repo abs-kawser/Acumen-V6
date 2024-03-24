@@ -1,5 +1,5 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import DrawerNavigator from '../DrawerNavigation/DrawerNavigator';
 import NewActivity from '../../Screens/NewActivity/NewActivity';
@@ -7,8 +7,8 @@ import SalesOrder from '../../Screens/HomePageComponent/SalesOrder';
 import OrderDelivery from '../../Screens/HomePageComponent/OrderDelivery';
 import Tailoring from '../../Screens/HomePageComponent/Tailoring';
 import Items from '../../Screens/HomePageComponent/Items';
-import {TouchableOpacity, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import StartActivity from '../../Screens/HomePageComponent/StartActivity';
 import ActivityCheck from '../../Screens/NewActivity/ActivityCheck';
 import SalesOrderSearch from '../../Screens/SalesOrder/SalesOrderSearch';
@@ -38,12 +38,15 @@ import Notes from '../../Screens/NewActivity/Notes';
 // import CameraScreen from '../../Components/HomePage/CameraScreen';
 
 // custom arrow button
+import { useTranslation } from 'react-i18next';
+
+
 
 const CustomBackArrow = () => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
-      <View style={{paddingHorizontal: 16}}>
+      <View style={{ paddingHorizontal: 16 }}>
         <Icon name="long-arrow-alt-left" color={'black'} size={16} />
       </View>
     </TouchableOpacity>
@@ -52,13 +55,17 @@ const CustomBackArrow = () => {
 
 const Stack = createNativeStackNavigator();
 
-const StackNavigator = ({navigation}) => {
+const StackNavigator = ({ navigation }) => {
+  const { t, i18n } = useTranslation();
+
+
   return (
+
     <Stack.Navigator>
       <Stack.Screen
         name="HomeScreen"
         component={DrawerNavigator}
-        options={{headerShown: false}}
+        options={{ headerShown: false }}
       />
 
       {/* ======== New Activity ======== */}
@@ -71,21 +78,37 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
 
-      <Stack.Screen
+      {/* <Stack.Screen
         name="New Activity"
         component={NewActivity}
         options={{
+          headerTitle: t("navigation.New Activity"),
           headerTitleStyle: {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
           headerLeft: ({navigation}) => (
+            <CustomBackArrow navigation={navigation} />
+          ),
+        }}
+      /> */}
+
+      <Stack.Screen
+        name="New Activity"
+        component={NewActivity}
+        options={{
+          headerTitle: t("stckNavigation.New Activity"), // Translate the header title here
+          headerTitleStyle: {
+            fontSize: 16, // Change the title text style
+            color: '#0D0D0D',
+          },
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -99,7 +122,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -113,7 +136,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -127,7 +150,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -141,12 +164,13 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
-
+      
+      
       <Stack.Screen
         name="Activity Summary"
         component={ActivitySummary}
@@ -155,7 +179,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -169,14 +193,13 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
 
       {/* ======== Appointment ======== */}
-
       <Stack.Screen
         name="Appointment Screen"
         component={Appointments}
@@ -185,15 +208,14 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
+      {/* ======== Notes ======== */}
 
-       {/* ======== Notes ======== */}
-
-       <Stack.Screen
+      <Stack.Screen
         name="Note"
         component={Notes}
         options={{
@@ -201,7 +223,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -215,7 +237,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -229,7 +251,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -244,7 +266,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -258,11 +280,13 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
+
+      {/* ================================================================================================ */}
 
       <Stack.Screen
         name="Sales Order Summary"
@@ -272,7 +296,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -287,7 +311,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -301,8 +325,8 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
-            <CustomBackArrow navigation={navigation} />
+          headerLeft: ({ navigation }) => (
+            <CustomBackArrow navigation={navigation}/>
           ),
         }}
       />
@@ -315,7 +339,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -330,7 +354,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -345,11 +369,12 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
+
 
       {/*========= draft ========*/}
       <Stack.Screen
@@ -360,14 +385,13 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
       />
 
       {/* scanner */}
-
       <Stack.Screen
         name="Scanner"
         component={ScannerScreen}
@@ -376,7 +400,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -391,7 +415,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -406,7 +430,7 @@ const StackNavigator = ({navigation}) => {
             fontSize: 16, // Change the title text style
             color: '#0D0D0D',
           },
-          headerLeft: ({navigation}) => (
+          headerLeft: ({ navigation }) => (
             <CustomBackArrow navigation={navigation} />
           ),
         }}
@@ -418,6 +442,9 @@ const StackNavigator = ({navigation}) => {
 };
 
 export default StackNavigator;
+
+
+
 
 {
   /* <Stack.Screen

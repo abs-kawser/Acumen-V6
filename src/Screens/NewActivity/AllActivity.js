@@ -43,20 +43,18 @@ import {getActivityItemsByDeviceActivityId} from '../../Database/ActivityItemsTa
 import {getSpecificationDataByDeviceActivityId} from '../../Database/SpecificationTable';
 
 const AllActivity = ({route}) => {
+
   const {data} = route.params;
   const toast = useToast();
+  // aita kon component thaka ashssa 
   const {value, note} = route.params;
-
   const {deviceId, ActivityID} = route.params;
-
   const isFocused = useIsFocused();
   const navigation = useNavigation();
 
   const date = moment();
   const time = date.format('YYYY-MM-DDTHH:mm:ss');
-
   const ActivityTime = date.format('YYYY-MM-DDTHH:mm:ss');
-
   const currentDate = date.format('YYYY-MM-DDTHH:mm:ss');
 
   // Context api
@@ -127,10 +125,9 @@ const AllActivity = ({route}) => {
     getData();
     // deleteData()
 
-    // === draft ====
+    // === draft ====\\
     initDraftDatabase();
     getDraftallData();
-
     // ==== Time tracker =====
     initTimeTrackerDatabase();
     getTimeTrackerAllData();
@@ -168,7 +165,6 @@ const AllActivity = ({route}) => {
   const getData = () => {
     // getActivityData(item => setActivityData(item));
     // getNewActivityByDeviceActivityId(devID, (item) => { setActivityData(item) })
-
     getNewActivityByDeviceActivityId(
       value ? value.DeviceActivityId : deviceId,
       item => {
@@ -181,29 +177,20 @@ const AllActivity = ({route}) => {
   };
 
   const draftActivity = value?.ActivityBy;
-
   // const draftDeviceActvityID = value ?.DeviceActivityId ;
-
   const draftDateTime = value?.DeviceSystemDateTime;
   const draftCustomer_id = value?.CustomerId;
-
   const draftActivityNote = value?.Notes;
-
   const draftActivityEntry = value?.ActivityBy;
   const draftActivityEntryDate = value?.DeviceSystemDateTime;
-
   const draftCustomerName = value?.CustomerName;
   const draftCustomerMobile = value?.CustomerMobile;
   const draftCustomerType = value?.CustomerType;
   const draftWorkingStatus = value?.WorkingStatus;
-
   //=============== from activity database============
-
   const Activity = activityData ? activityData[0].ActivityBy : draftActivity;
   const devID = activityData ? activityData[0].DeviceActivityId : '';
-
   // const devID = activityData ? activityData[0].DeviceActivityId : draftDeviceActvityID;
-
   const dateTime = activityData
     ? activityData[0].DeviceSystemDateTime
     : draftDateTime;
@@ -234,15 +221,12 @@ const AllActivity = ({route}) => {
   const activityWorkingStatus = activityData
     ? activityData[0].WorkingStatus
     : draftWorkingStatus;
-
   // pass this data into database
-
   const ActivityBy = Activity;
   const DeviceActivityID = deviceActivityId;
   const DeviceSystemDateTime = dateTime;
   const CustomerId = customer_id;
   const Notes = activityNote;
-
   const EntryBy = activityEntry;
   const EntryDate = currentDate;
 
@@ -366,10 +350,8 @@ const AllActivity = ({route}) => {
           //   type: 'success',
           //   duration: 1500,
           // });
-
           getTimeTrackerAllData();
           // navigation.navigate('Draft');
-
           specificTimeTrackData();
         } else {
           // Alert.alert('Failed to insert Time Tracker data');
@@ -391,17 +373,14 @@ const AllActivity = ({route}) => {
       currentWorkingStatus,
       EntryBy,
       EntryDate,
-
       success => {
         if (success) {
           // toast.show('Resume data inserted successfully', {
           //   type: 'success',
           //   duration: 1500,
           // });
-
           getTimeTrackerAllData();
           // navigation.navigate('Draft');
-
           specificTimeTrackData();
         } else {
           // Alert.alert('Failed to insert Time Tracker data');
@@ -452,7 +431,6 @@ const AllActivity = ({route}) => {
   useEffect(() => {
     if (route.params?.ActivityID) {
       ResumeTimeTrackerData(route.params?.ActivityID);
-
       // SubmitTimeTrackerData()
     }
   }, [route.params?.ActivityID]);
@@ -546,7 +524,6 @@ const AllActivity = ({route}) => {
   };
 
   const apiResponseData = activityData2;
-
   // Remove square brackets and get the JSON object
   const jsonObject = apiResponseData[0];
 
@@ -563,9 +540,11 @@ const AllActivity = ({route}) => {
     JSON.stringify(resultObject, null, 2),
   );
 
+
+
+
   return (
-
-
+    
     <View style={customStyle.container}>
       <ScrollView>
         <View style={styles.mainContainer}>
@@ -769,7 +748,6 @@ const AllActivity = ({route}) => {
           </View>
 
           {/* Notes */}
-
           {/* <View>
             <Text style={styles.label}>Notes</Text>
             <View style={{flex: 1}}>
@@ -850,7 +828,6 @@ const AllActivity = ({route}) => {
                 )}
 
                 {/*========== table body ==========*/}
-
                 {resultObject.SalesPersonActivityItemDetailsDTOList.map(
                   (item, index) => (
                     <View style={styles.table_body}>
@@ -877,7 +854,6 @@ const AllActivity = ({route}) => {
           </View>
 
           {/*=========== Specification Details ==============*/}
-
           <View style={styles.order_container}>
             {resultObject.SalesPersonActivitySpecDetailsDTOList.length > 0 && (
               <View style={{alignSelf: 'flex-start'}}>
@@ -892,7 +868,6 @@ const AllActivity = ({route}) => {
               {/* table container */}
               <View style={styles.table}>
                 {/*========== table head ===========*/}
-
                 {resultObject.SalesPersonActivitySpecDetailsDTOList.length >
                   0 && (
                   <View style={styles.table_head}>
@@ -1049,6 +1024,7 @@ const AllActivity = ({route}) => {
 };
 
 export default AllActivity;
+
 
 const styles = StyleSheet.create({
   mainContainer: {

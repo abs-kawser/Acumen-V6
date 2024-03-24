@@ -13,7 +13,11 @@ import {deleteDraftData, getDraftData, getDraftDataByActivityBy} from '../../Dat
 import moment from 'moment';
 import { AuthContext } from '../../Context/AuthContext';
 
+
+
+
 const DraftScreen = () => {
+
   const isFocused = useIsFocused();
   const navigation = useNavigation();
 
@@ -21,29 +25,22 @@ const DraftScreen = () => {
   const {login, userDetails} = isLoggedIn;
 
   const [draftData, setDraftData] = useState(null);
-
   console.log('draft from draft screen', JSON.stringify(draftData, null, 2));
 
   useEffect(() => {
     getDraftallData();
   }, [isFocused]);
 
-
-  const ActivityBy = userDetails?.empId;
-
-  const getDraftallData = () => {
     // getDraftData(item => setDraftData(item));
 
-
+  const ActivityBy = userDetails?.empId;
+  const getDraftallData = () => {
     getDraftDataByActivityBy(ActivityBy, item => {
       setDraftData(item);
     });
-
-
   };
 
   //   delete data  getDraftDataByActivityBy
-
   const handleDeleteItem = id => {
     deleteDraftData(id, success => {
       if (success) {
@@ -58,7 +55,9 @@ const DraftScreen = () => {
     });
   };
 
+
   return (
+
     <ScrollView style={{flex: 1, padding: 10}}>
       <View style={{marginBottom: 50}}>
         {draftData?.map((item, index) => (
@@ -68,7 +67,6 @@ const DraftScreen = () => {
               <Text style={styles.contentTxt}>Draft ID</Text>
               <Text style={styles.contentTxt2}>{item.Draft_id}</Text>
             </View> */}
-
               <View style={styles.leaveContent}>
                 <Text style={styles.contentTxt}>ActivityID</Text>
                 <Text style={styles.contentTxt2}>{item.DeviceActivityId}</Text>
@@ -82,12 +80,10 @@ const DraftScreen = () => {
                     : item?.CustomerName}
                 </Text>
               </View>
-
               {/* <View style={styles.leaveContent}>
               <Text style={styles.contentTxt}>EntryBy</Text>
               <Text style={styles.contentTxt2}>{item.ActivityBy}</Text>
             </View> */}
-
               <View style={styles.leaveContent}>
                 <Text style={styles.contentTxt}>Start Time</Text>
                 <Text style={styles.contentTxt2}>
@@ -96,7 +92,6 @@ const DraftScreen = () => {
                   )}
                 </Text>
               </View>
-
               <View style={styles.leaveContent}>
                 <Text style={styles.contentTxt}>Status</Text>
                 <Text
@@ -112,9 +107,7 @@ const DraftScreen = () => {
                 </Text>
               </View>
             </View>
-
             {/* button */}
-
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button2}
@@ -125,7 +118,6 @@ const DraftScreen = () => {
                   Delete
                 </Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 style={[
                   styles.button,
@@ -138,7 +130,6 @@ const DraftScreen = () => {
                 // onPress={() =>
                 //   navigation.navigate('All Activity', {value: item})
                 // }
-
                 onPress={() =>
                   navigation.navigate('All Activity', {
                     value: item,
@@ -160,6 +151,8 @@ const DraftScreen = () => {
         ))}
       </View>
     </ScrollView>
+
+
   );
 };
 

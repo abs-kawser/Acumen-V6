@@ -1,6 +1,7 @@
 import {db} from './MainDatabase';
 
 export const initTimeTrackerDatabase = () => {
+
   db.transaction(txn => {
     txn.executeSql(
       "SELECT name FROM sqlite_master WHERE type='table' AND name='time_tracker_table'",
@@ -18,8 +19,10 @@ export const initTimeTrackerDatabase = () => {
         }
       },
     );
-  });
+  });  
 };
+
+
 
 // ====== insert ======
 // working code
@@ -167,16 +170,11 @@ export const getTimeTrackerData = callback => {
       const temp = [];
       for (let i = 0; i < res.rows.length; ++i) {
         temp.push(res.rows.item(i));
-      }
+      };
       callback(temp);
     });
   });
 };
-
-
-
-
-
 
 
 export const getTimeTrackerItemsByDeviceActivityId = (DeviceActivityID, callback) => {
@@ -199,4 +197,6 @@ export const getTimeTrackerItemsByDeviceActivityId = (DeviceActivityID, callback
       );
     });
   };
+
+
   

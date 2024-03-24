@@ -3,24 +3,28 @@ import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { useLanguage } from '../../Context/LanguageProvider';
 
 const CustomSwitch = () => {
+  
   const [isEnabled, setIsEnabled] = useState(false);
 
   const { currentLanguage, handleLanguageChange } = useLanguage();
 
   const toggleSwitch = () => {
+
     setIsEnabled((prev) => !prev);
-
-     // Log 'bd' if enabled, 'en' otherwise
+    // Log 'bd' if enabled, 'en' otherwise
     //  console.log(isEnabled ? 'en' : 'bd');
-
     if (isEnabled) {
-        handleLanguageChange('en')
+      handleLanguageChange('en')
     } else {
-        handleLanguageChange('bd')
+      handleLanguageChange('bd')
     }
   };
 
+
+
   return (
+
+    // 
 
     <TouchableWithoutFeedback onPress={toggleSwitch}>
       <View
@@ -43,9 +47,10 @@ const CustomSwitch = () => {
         )}
       </View>
     </TouchableWithoutFeedback>
-    
+
   );
 };
+
 
 const styles = StyleSheet.create({
   switchContainer: {
@@ -88,14 +93,14 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 10,
     alignSelf: 'center',
-    fontWeight:"700",
+    fontWeight: "700",
     // fontFamily:"Potro-Bold"
   },
   switchTextInactive: {
     color: '#000',
     fontSize: 10,
     alignSelf: 'center',
-    fontWeight:"700"
+    fontWeight: "700"
   },
 });
 

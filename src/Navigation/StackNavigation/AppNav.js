@@ -60,5 +60,4 @@ const AppNav = () => {
 // && isLoggedIn.userDetails
 
 export default AppNav;
-
 const styles = StyleSheet.create({});

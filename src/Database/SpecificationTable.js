@@ -22,7 +22,7 @@ import {db} from './MainDatabase';
 //   });
 // };
 
-// practive
+// practive;
 
 export const initSpecificationTable = () => {
   db.transaction(txn => {
@@ -48,8 +48,11 @@ export const initSpecificationTable = () => {
 //========== insert data into table ===========
 
 export const insertSpecificationData = (tableData, callback) => {
-  let successCount = 0; // Keep track of successful insertions
-  const totalItems = tableData.length; // Total items to be inserted
+// Keep track of successful insertions
+// Total items to be inserted
+
+  let successCount = 0; 
+  const totalItems = tableData.length; 
 
   db.transaction(txn => {
     tableData.forEach(item => {
@@ -59,11 +62,9 @@ export const insertSpecificationData = (tableData, callback) => {
         Measurement,
         Remarks,
         DeviceSystemDateTime,
-
         DeviceActivityId,
         Name,
       } = item;
-
       // Check if the item already exists in the database
       txn.executeSql(
         'SELECT * FROM specification_table WHERE DeviceActivityId = ? AND DesignTemplateId = ?',
@@ -79,9 +80,7 @@ export const insertSpecificationData = (tableData, callback) => {
                 Measurement,
                 Remarks,
                 DeviceSystemDateTime,
-
                 DeviceActivityId,
-
                 Name,
               ],
               (tx, res) => {
@@ -103,9 +102,7 @@ export const insertSpecificationData = (tableData, callback) => {
             successCount++;
             if (successCount === totalItems) {
               // If all insertions are successful, trigger callback with success
-
               // callback(true);
-
               callback(true, true);
             }
           }
@@ -132,7 +129,6 @@ export const insertSpecificationData = (tableData, callback) => {
 };
 
 //========== get data from table ===========
-
 export const getSpecificationData = callback => {
   db.transaction(txn => {
     txn.executeSql('SELECT * FROM specification_table', [], (tx, res) => {
@@ -145,8 +141,8 @@ export const getSpecificationData = callback => {
   });
 };
 
-//========== delete data from table ===========
 
+//========== delete data from table ===========
 // export const deleteSpecificationData = () => {
 //   db.transaction(tx => {
 //     tx.executeSql(
@@ -165,7 +161,6 @@ export const getSpecificationData = callback => {
 // };
 
 // ====== get data deviceactivity wise ======
-
 export const getSpecificationDataByDeviceActivityId = (
   DeviceActivityID,
   callback,
@@ -183,7 +178,7 @@ export const getSpecificationDataByDeviceActivityId = (
           }
           callback(specificationData);
         } else {
-          callback([]);
+          callback([])
         }
       },
     );
@@ -209,15 +204,6 @@ export const deleteSpecificationData = (specId, callback) => {
     );
   });
 };
-
-
-
-
-
-
-
-
-
 
 
 

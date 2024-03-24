@@ -20,13 +20,13 @@ import {useToast} from 'react-native-toast-notifications';
 import Toast from 'react-native-toast-notifications';
 
 const ActivityCheck = () => {
-  const navigation = useNavigation();
 
+
+  const navigation = useNavigation();
   // toast message
   const toast = useToast();
 
   const toastRef = useRef();
-
   // camera permission
   const {hasPermission, requestPermission} = useCameraPermission();
   const [barcode, setBarcode] = useState(null);
@@ -145,9 +145,12 @@ const ActivityCheck = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // =========== MAIN =============
+  // ===========  MAIN  =============\\
+
   return (
+    
     <ScrollView style={customStyle.container}>
+      
       <View style={styles.mainContainer}>
         {/* top header text */}
         <View style={{alignSelf: 'center', marginVertical: 15}}>
@@ -177,7 +180,6 @@ const ActivityCheck = () => {
         </View>
 
         {/* table */}
-
         {/* <View style={styles.tableContainer}>
           {renderTableHeader()}
           {renderTableRows()}
@@ -185,11 +187,11 @@ const ActivityCheck = () => {
 
         {/* table 1 */}
 
+
         <View style={styles.wrapper}>
           {/* table container */}
           <View style={styles.table}>
             {/*========== table head ===========*/}
-
             <View style={styles.table_head}>
               {/* one single row */}
               <View style={{width: '15%'}}>
@@ -530,10 +532,9 @@ const ActivityCheck = () => {
               borderColor: 'red',
               width: 300,
               height: 300,
-              // display:"flex",
               alignSelf: 'center',
-              // display: blinkLine ? 'none' : 'flex',
               zIndex: 10,
+              
             }}
           />
           {/* blinking line */}
@@ -556,6 +557,7 @@ const ActivityCheck = () => {
 };
 
 export default ActivityCheck;
+
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -672,7 +674,6 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: '#ced4da',
     padding: 5,
-
     fontSize: 13,
     flex: 1,
   },
@@ -681,7 +682,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#E2F6F8',
     // padding: 10,
-
     borderBottomWidth: 1,
     borderBottomColor: '#ced4da',
   },

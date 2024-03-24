@@ -36,6 +36,7 @@ import { useTranslation } from 'react-i18next';
 
 const ActivityItems = ({route}) => {
   const { t, i18n } = useTranslation();
+
   moment.locale('bn');
 
   const navigation = useNavigation();
@@ -144,9 +145,6 @@ const ActivityItems = ({route}) => {
 
   const handleSaveButtonClick = () => {
     console.log('itemmmmmm Table Data:', JSON.stringify(tableData, null, 2));
-
-
-
     insertActivityItem(tableData, (success, dataAlreadyExists) => {
       if (success) {
         if (dataAlreadyExists) {
@@ -165,7 +163,6 @@ const ActivityItems = ({route}) => {
   };
 
   // =====================
-
   const handleQtyChange = (index, text) => {
     const updatedData = [...tableData];
     updatedData[index].ItemQty = text;
@@ -203,7 +200,6 @@ const ActivityItems = ({route}) => {
   };
 
   // ===== barcode section =====
-
   const handleItemButtonPress = async () => {
 
     try {
@@ -340,10 +336,6 @@ const ActivityItems = ({route}) => {
          {/* <Text style={styles.label}>
              {t('navigation.Activity Date')}         
               </Text> */}
-
-
-
-
           <View>
             <Text style={{fontWeight: '800', color: 'black'}}>
               <Text>{t('navigation.Date')}</Text>
@@ -409,12 +401,10 @@ const ActivityItems = ({route}) => {
     </View> */}
 
         {/* <Text style={{color:"red"}}>{isChecked ? 1 : 0}</Text> */}
-
         {/* barcode scanner */}
         <View style={styles.barcode}>
-          <Text style={styles.label}>{t("navigation.Item Add")}</Text>
+      <Text style={styles.label}>{t("navigation.Item Add")}</Text>      
           {/* <View style={{flex: 1}}> */}
-
           <TouchableOpacity
             style={styles.input}
             onPress={handleItemButtonPress}>
@@ -422,7 +412,6 @@ const ActivityItems = ({route}) => {
               <Text style={{color: 'black', fontSize: 15}}>
                 {barcode ? barcode : 'Barcode'}
               </Text>
-
               <Image
                 style={{width: 30, height: 30, resizeMode: 'contain'}}
                 source={require('../../../assets/homeScreen/scan.png')}
@@ -436,7 +425,6 @@ const ActivityItems = ({route}) => {
           {/* table container */}
           <View style={styles.table}>
             {/*========== table head ===========*/}
-
             <View style={styles.table_head}>
               {/* one single row */}
               <View style={{width: '15%'}}>
@@ -545,9 +533,7 @@ const ActivityItems = ({route}) => {
                         style={[styles.tableInput]}
                         // keyboardType="numeric"
                         // value={remarks}
-
                         // value={rowData.remarks}
-
                         // onChangeText={text => setRemarks(text)}
                         onChangeText={text => handleRemarksChange(index, text)}
                       />
@@ -558,7 +544,6 @@ const ActivityItems = ({route}) => {
             ))}
 
             {/* ====================================== */}
-
             {saveData.map((rowData, index) => (
               <View>
                 <View style={styles.table_body}>
@@ -598,18 +583,14 @@ const ActivityItems = ({route}) => {
                         style={[styles.tableInput]}
                         // keyboardType="numeric"
                         // value={qty}
-
                         // value={rowData.ItemQty}
-
                         value={
                           rowData.ItemQty === null
                             ? rowData.ItemQty
                             : rowData.ItemQty.toString()
                         }
                         // onChangeText={text => setQty(text)}
-
                         // onChangeText={text => handleQtyChange(index, text)}
-
                         editable={false}
                       />
                     </View>
@@ -622,16 +603,13 @@ const ActivityItems = ({route}) => {
                         borderRightColor: '#ced4da',
                         flex: 1,
                         // alignContent: 'center',
-
                         justifyContent: 'center',
                       }}>
                       <CheckBox
                         style={{alignSelf: 'center'}}
                         // value={rowData.IsSample}
-
                         value={rowData.IsSample === 1}
                         // value={rowData.sample === 1}
-
                         // onValueChange={value =>
                         //   handleCheckboxChange(index, value)
                         // }
@@ -657,7 +635,6 @@ const ActivityItems = ({route}) => {
                         style={[styles.tableInput]}
                         // keyboardType="numeric"
                         // value={remarks}
-
                         value={rowData.Remarks}
                         // onChangeText={text => setRemarks(text)}
                         onChangeText={text => handleRemarksChange(index, text)}
@@ -670,9 +647,7 @@ const ActivityItems = ({route}) => {
             ))}
           </View>
         </View>
-
         {/* camera */}
-
         {isCameraActive && (
           <Modal
             // animationType="fade"
@@ -717,9 +692,7 @@ const ActivityItems = ({route}) => {
           </Modal>
         )}
       </ScrollView>
-
       {/* button */}
-
       <View
         style={{
           display: 'flex',
@@ -755,7 +728,6 @@ const ActivityItems = ({route}) => {
           }}
           // onPress={() => navigation.navigate('Activity Check')}
           // onPress={addBarcodeToTable}
-
           onPress={() => handleSaveButtonClick()}>
           <Text style={{color: '#04C1AA', fontWeight: '700'}}>Save & Next</Text>
         </TouchableOpacity>
